@@ -89,6 +89,18 @@ ruleTester.run('unused-fields', rules['unused-fields'], {
         # eslint-disable-next-line relay/unused-fields
         name
       }\`;
+    `,
+    `
+      graphql\`
+        fragment FooConnection on Page {
+          edges {
+            node {
+              name
+            }
+          }
+        }
+      \`;
+      const names = getNodes(foo).map(function(foo) { return foo.name; });
     `
   ],
   invalid: [

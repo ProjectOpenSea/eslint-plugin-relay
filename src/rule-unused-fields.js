@@ -122,6 +122,15 @@ function rule(context) {
     }
   }
 
+  function visitGetNodes(_node) {
+    foundMemberAccesses['edges'] = true;
+    foundMemberAccesses['node'] = true;
+  }
+
+  function visitGetFirstNode(node) {
+    visitGetNodes(node);
+  }
+
   function visitMemberExpression(node) {
     if (node.property.type === 'Identifier') {
       foundMemberAccesses[node.property.name] = true;
@@ -171,6 +180,12 @@ function rule(context) {
         return;
       }
       switch (node.callee.name) {
+        case 'getNodes':
+          visitGetNodes(node);
+          break;
+        case 'getFirstNode':
+          visitGetFirstNode(node);
+          break;
         case 'getByPath':
           visitGetByPathCall(node);
           break;
