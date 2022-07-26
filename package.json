@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-relay",
-  "version": "1.8.3",
+  "version": "1.8.4-alpha",
   "description": "ESLint plugin for Relay.",
   "main": "eslint-plugin-relay",
   "repository": "relayjs/eslint-plugin-relay",
